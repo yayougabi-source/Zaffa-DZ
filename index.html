@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaffa DZ | زفة دي زاد</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- React & ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #531c70;
+            /* Rich Purple */
+            --secondary-color: #d4af37;
+            /* Elegant Gold */
+            --bg-color: #fdfdfd;
+            --surface-color: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #fdfdfd;
+            --border-radius: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Language specific fonts */
+        body[lang="ar"] {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+        }
+
+        body[lang="fr"] {
+            font-family: 'Outfit', sans-serif;
+            direction: ltr;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Nav */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .logo img {
+            height: 48px;
+            border-radius: 12px;
+        }
+
+        .lang-switch {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-switch:hover {
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            background: linear-gradient(135deg, rgba(83, 28, 112, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(83, 28, 112, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h2 {
+            font-size: 2.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #555;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(83, 28, 112, 0.2);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(83, 28, 112, 0.3);
+            background: #6a2491;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(83, 28, 112, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Halls Grid */
+        .halls-section {
+            padding: 6rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 4rem;
+            font-weight: 800;
+        }
+
+        .halls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .hall-card {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            position: relative;
+        }
+
+        .hall-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(83, 28, 112, 0.12);
+        }
+
+        .hall-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hall-card:hover .hall-img {
+            transform: scale(1.08);
+        }
+
+        .img-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        body[lang="fr"] .badge {
+            right: auto;
+            left: 20px;
+        }
+
+        .hall-content {
+            padding: 2.5rem;
+        }
+
+        .hall-title {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .hall-location {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hall-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 1.5rem;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: #888;
+            display: block;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 5rem 4rem 2rem;
+            margin-top: 2rem;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            color: #ffffff;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-decoration: none;
+        }
+
+        .social-link.instagram {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+
+        .social-link.tiktok {
+            background: #000000;
+        }
+
+        .social-link.whatsapp {
+            background: #25D366;
+        }
+
+        .social-link.gps {
+            background: #ea4335;
+            /* Google Maps Pin Red */
+        }
+
+        .social-link:hover {
+            color: #ffffff;
+            transform: translateY(-8px);
+            filter: brightness(1.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .copyright {
+            text-align: center;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .halls-section {
+                padding: 4rem 2rem;
+            }
+
+            .footer {
+                padding: 4rem 2rem 2rem;
+                border-top-left-radius: 30px;
+                border-top-right-radius: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const translations = {
+            ar: {
+                lang: "Français",
+                slogan1: "نظم حفلتك بسهولة",
+                slogan2: "احجز و خلي الباقي علينا",
+                desc: "كلش منظم بلا صداع راس. اكتشف أفخم قاعات الأعراس والمناسبات في الجزائر، احجزها بضغطة زر.",
+                bookNow: "احجز الآن",
+                seeDates: "شوف المواعيد",
+                ourHalls: "اكتشف قاعاتنا",
+                hall1Name: "قاعة الأميرة الفضية",
+                hall2Name: "حديقة الأحلام المفتوحة",
+                location1: "الجزائر العاصمة",
+                location2: "وهران",
+                priceLabel: "ابتداءً من",
+                footerTitle: "ابقى على تواصل معنا",
+                footerDesc: "تابعنا على منصات التواصل الاجتماعي لمعرفة آخر العروض وأجمل القاعات.",
+                rights: "© 2026 زفة دي زاد. جميع الحقوق محفوظة.",
+                topRated: "الأعلى تقييماً"
+            },
+            fr: {
+                lang: "العربية",
+                slogan1: "Organisez votre fête facilement",
+                slogan2: "Réservez, on s'occupe du reste",
+                desc: "Tout est organisé sans prise de tête. Découvrez les salles de mariage et d'événements les plus luxueuses d'Algérie.",
+                bookNow: "Réserver",
+                seeDates: "Voir les dates",
+                ourHalls: "Découvrez nos salles",
+                hall1Name: "Salle Princesse d'Argent",
+                hall2Name: "Jardin des Rêves Extérieur",
+                location1: "Alger",
+                location2: "Oran",
+                priceLabel: "À partir de",
+                footerTitle: "Restons en contact",
+                footerDesc: "Suivez-nous sur les réseaux sociaux pour découvrir nos dernières offres.",
+                rights: "© 2026 Zaffa DZ. Tous droits réservés.",
+                topRated: "Mieux Noté"
+            }
+        };
+
+        const App = () => {
+            const [lang, setLang] = useState('ar');
+            const t = translations[lang];
+
+            useEffect(() => {
+                document.body.setAttribute('lang', lang);
+                document.title = lang === 'ar' ? "Zaffa DZ | زفة دي زاد" : "Zaffa DZ | Réservation de Salles";
+            }, [lang]);
+
+            const toggleLang = () => {
+                setLang(prev => prev === 'ar' ? 'fr' : 'ar');
+            };
+
+            const halls = [
+                {
+                    id: 1,
+                    name: t.hall1Name,
+                    location: t.location1,
+                    image: './hall_1.png',
+                    price: "450,000 DZD",
+                    topRated: true
+                },
+                {
+                    id: 2,
+                    name: t.hall2Name,
+                    location: t.location2,
+                    image: './hall_2.png',
+                    price: "320,000 DZD",
+                    topRated: false
+                }
+            ];
+
+            return (
+                <div>
+                    <nav className="navbar">
+                        <div className="logo">
+                            <img src="./logo.png" alt="Zaffa DZ Logo" />
+                            <span>Zaffa DZ</span>
+                        </div>
+                        <button className="lang-switch" onClick={toggleLang}>
+                            <i className="fa-solid fa-globe"></i>
+                            {t.lang}
+                        </button>
+                    </nav>
+
+                    <section className="hero">
+                        <h1>{t.slogan1}</h1>
+                        <h2>{t.slogan2}</h2>
+                        <p>{t.desc}</p>
+                        <div className="hero-buttons">
+                            <button className="btn-primary">
+                                <i className="fa-regular fa-calendar-check"></i>
+                                {t.bookNow}
+                            </button>
+                            <button className="btn-secondary">
+                                <i className="fa-regular fa-clock"></i>
+                                {t.seeDates}
+                            </button>
+                        </div>
+                    </section>
+
+                    <section className="halls-section">
+                        <h3 className="section-title">{t.ourHalls}</h3>
+                        <div className="halls-grid">
+                            {halls.map(hall => (
+                                <div className="hall-card" key={hall.id}>
+                                    <div className="img-container">
+                                        {hall.topRated && <div className="badge"><i className="fa-solid fa-star" style={{ color: '#fff', marginInlineEnd: '4px' }}></i>{t.topRated}</div>}
+                                        <img src={hall.image} alt={hall.name} className="hall-img" />
+                                    </div>
+                                    <div className="hall-content">
+                                        <h4 className="hall-title">{hall.name}</h4>
+                                        <div className="hall-location">
+                                            <i className="fa-solid fa-location-dot" style={{ color: '#d4af37' }}></i>
+                                            {hall.location}
+                                        </div>
+                                        <div className="hall-footer">
+                                            <div>
+                                                <span className="price-label">{t.priceLabel}</span>
+                                                <div className="price">{hall.price}</div>
+                                            </div>
+                                            <button className="btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
+                                                {t.bookNow}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <footer className="footer">
+                        <div className="footer-content">
+                            <div className="footer-text">
+                                <h3>{t.footerTitle}</h3>
+                                <p style={{ opacity: 0.9, maxWidth: '400px', fontSize: '1.1rem' }}>{t.footerDesc}</p>
+                            </div>
+                            <div className="social-links">
+                                <a href="#" className="social-link instagram" title="Instagram"><i className="fa-brands fa-instagram"></i></a>
+                                <a href="#" className="social-link tiktok" title="TikTok"><i className="fa-brands fa-tiktok"></i></a>
+                                <a href="#" className="social-link whatsapp" title="WhatsApp"><i className="fa-brands fa-whatsapp"></i></a>
+                                <a href="#" className="social-link gps" title="GPS"><i className="fa-solid fa-map-location-dot"></i></a>
+                            </div>
+                        </div>
+                        <div className="copyright">
+                            {t.rights}
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
