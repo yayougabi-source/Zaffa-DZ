@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaffa DZ Partners | بوابة شركاء زفة دي زاد</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #531c70;
+            --secondary-color: #d4af37;
+            --bg-color: #f7f8fa;
+            --surface-color: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #fdfdfd;
+            --border-radius: 20px;
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); line-height: 1.6; }
+
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: var(--surface-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); position: sticky; top: 0; z-index: 100; }
+        .logo { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; font-weight: 800; color: var(--primary-color); text-decoration: none; }
+        .logo img { height: 48px; border-radius: 12px; }
+        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); padding: 0.6rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+        .btn-outline:hover { background: var(--primary-color); color: #fff; }
+
+        .portal-container { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+        .header-section { text-align: center; margin-bottom: 3rem; }
+        .header-section h1 { color: var(--primary-color); font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .header-section p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Stepper */
+        .stepper { display: flex; justify-content: space-between; position: relative; margin-bottom: 3rem; }
+        .stepper::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: #e0e0e0; transform: translateY(-50%); z-index: 1; border-radius: 10px; }
+        .stepper-progress { position: absolute; top: 50%; right: 0; height: 4px; background: var(--secondary-color); transform: translateY(-50%); z-index: 2; transition: width 0.4s ease; border-radius: 10px; }
+        body[dir="ltr"] .stepper-progress { right: auto; left: 0; }
+        .step { position: relative; z-index: 3; background: var(--surface-color); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; color: #a0a0a0; border: 4px solid #e0e0e0; transition: var(--transition); }
+        .step.active { border-color: var(--secondary-color); color: var(--secondary-color); box-shadow: 0 0 0 5px rgba(212, 175, 55, 0.15); }
+        .step.completed { background: var(--secondary-color); border-color: var(--secondary-color); color: #fff; }
+
+        .form-card { background: var(--surface-color); border-radius: var(--border-radius); padding: 3rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05); }
+        .step-title { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 2rem; display: flex; align-items: center; gap: 10px; }
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+        .input-group label { font-weight: 700; color: #444; display: flex; align-items: center; gap: 8px; }
+        .input-group input, .input-group select { padding: 1rem 1.2rem; border: 2px solid #eee; border-radius: 12px; font-size: 1rem; outline: none; transition: var(--transition); background: #fdfdfd; }
+        .input-group input:focus, .input-group select:focus { border-color: var(--secondary-color); background: #fff; box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1); }
+        
+        .section-separator { width: 100%; height: 1px; background: #eee; margin: 2rem 0; }
+
+        .checkbox-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 10px; }
+        .custom-checkbox { display: flex; align-items: center; gap: 10px; background: #f9f9f9; padding: 12px; border-radius: 10px; border: 1px solid #eee; cursor: pointer; transition: var(--transition); }
+        .custom-checkbox:hover { border-color: var(--secondary-color); }
+        .custom-checkbox input { cursor: pointer; width: 18px; height: 18px; accent-color: var(--secondary-color); }
+
+        .upload-zone { border: 2px dashed #ddd; border-radius: 15px; padding: 2.5rem; text-align: center; background: #fafafa; cursor: pointer; transition: var(--transition); margin-bottom: 1.5rem; position: relative; }
+        .upload-zone:hover { border-color: var(--secondary-color); background: #fff8eb; }
+        .upload-zone i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 1rem; }
+        .upload-zone p { color: #666; font-weight: 600; margin-bottom: 0.5rem; }
+        .upload-zone input { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+        
+        .photo-upload-zone { border-color: var(--primary-color); background: #fdf8ff; }
+        .photo-upload-zone i { color: var(--primary-color); }
+
+        .actions { display: flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #f0f0f0; }
+        .btn-prev { background: transparent; color: #666; border: none; padding: 1rem 2rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; border-radius: 50px; transition: var(--transition); }
+        .btn-prev:hover { background: #eee; color: #333; }
+        .btn-next { background: linear-gradient(135deg, var(--primary-color), #2d0b40); color: #fff; border: none; padding: 1rem 3rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; border-radius: 50px; box-shadow: 0 10px 20px rgba(83, 28, 112, 0.2); transition: var(--transition); display: flex; align-items: center; gap: 10px; }
+        .btn-next:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(83, 28, 112, 0.3); }
+        .btn-submit { background: linear-gradient(135deg, var(--secondary-color), #b8962e); color: #fff; border: none; padding: 1rem 3rem; font-weight: 700; font-size: 1.1rem; cursor: pointer; border-radius: 50px; box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); transition: var(--transition); display: flex; align-items: center; gap: 10px; }
+        .btn-submit:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+        .success-state { text-align: center; padding: 3rem 1rem; }
+        .success-state i { font-size: 5rem; color: #25D366; margin-bottom: 2rem; animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+        .success-state h2 { color: var(--primary-color); font-size: 2.2rem; margin-bottom: 1rem; }
+        .success-state p { font-size: 1.1rem; color: #666; line-height: 1.8; max-width: 500px; margin: 0 auto; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1.5rem; }
+            .portal-container { padding: 0 1.5rem; margin: 2rem auto; }
+            .form-card { padding: 2rem 1.5rem; }
+            .input-row { grid-template-columns: 1fr; gap: 0; }
+            .checkbox-grid { grid-template-columns: 1fr 1fr; }
+            .header-section h1 { font-size: 2rem; }
+            .actions { flex-direction: column-reverse; gap: 1rem; }
+            .btn-next, .btn-submit, .btn-prev { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        const translations = {
+            ar: {
+                lang: "Français",
+                dir: "rtl",
+                title: "انضم كشريك موثوق",
+                desc: "قم بزيادة حجوزاتك، تحكم في مواعيدك، وضاعف أرباحك بالانضمام للشبكة الأولى لقاعات الإحتفالات في الجزائر.",
+                back: "العودة للمنصة",
+                step1: "بيانات القائم على الحساب",
+                step2: "تفاصيل القاعة والدفع",
+                step3: "التحقق من الهوية (KYB)",
+                prev: "السابق",
+                next: "التالي",
+                submit: "إرسال طلب الانضمام",
+                successTitle: "تم استلام طلبك بنجاح!",
+                successDesc: "شكراً لثقتك بمنصة زفة دي زاد. طلبك الآن قيد المراجعة لدى فريق الجودة والدعم الفني للتأكد من الوثائق القانونية.",
+                successCall: "سيقوم أحد ممثلينا بالاتصال بكم خلال 24 ساعة للتحقق وتفعيل الحساب رسمياً.",
+                // Step 1 additions
+                fullNameLabel: "الاسم واللقب الكامل",
+                fullNamePlaceholder: "مثال: أحمد بوعلام",
+                roleLabel: "الصِفة",
+                roleOwner: "المالك الشرعي للقاعة",
+                roleManager: "مسيّر / مدير المبيعات",
+                roleAgent: "وكيل حصري",
+                phoneLabel: "رقم الهاتف المحمول",
+                emailLabel: "البريد الإلكتروني",
+                // Step 2 additions
+                hallNameLabel: "الاسم التسويقي للقاعة",
+                hallNamePlaceholder: "مثال: قاعة ألف ليلة وليلة",
+                stateLabel: "الولاية",
+                state16: "الجزائر العاصمة 16", state31: "وهران 31", state25: "قسنطينة 25", state19: "سطيف 19",
+                mapLinkLabel: "رابط الموقع (Google Maps)",
+                capacityLabel: "السعة الأقصى للضيوف",
+                priceLabel: "سعر الحجز المبدئي المعروض (دج)",
+                amenitiesLabel: "الخدمات المتوفرة (اختر ما ينطبق):",
+                amParking: "موقف سيارات مؤمن", amAc: "تكييف مركزي", amCatering: "خدمة الإطعام",
+                amBrideRoom: "غرفة خاصة بالعروس", amGenerator: "مولد كهربائي", amDj: "ديكور و دي جي (DJ)",
+                // New elements Step 2
+                hallPhotosLabel: "صور واجهة وديكور القاعة (اختر صور متعددة)",
+                hallPhotosDesc: "ارفع 3 صور عالية الجودة على الأقل لزيادة فرص الإقناع، يمكن اختيار صور متعددة دفعة واحدة.",
+                paymentMethodLabel: "كيف تفضل استلام (العربون المبدئي) من الزبائن؟",
+                ccpLabel: "الحساب البريدي الجاري لاستلام الأموال (CCP / RIP)",
+                ccpPlaceholder: "0012345678 99",
+                ribLabel: "الحساب البنكي (RIB) أو بريدي موب",
+                // Step 3 additions
+                kybDesc: "لضمان جودة المنصة وشفافيتها، يرجى تقديم الوثائق القانونية التي تثبت ملكيتك أو حقك في تسيير القاعة.",
+                rcLabel: "ارفع نسخة من السجل التجاري (Registre de Commerce)",
+                rcFormat: "بصيغة PDF أو صورة واضحة",
+                idLabel: "ارفع نسخة من بطاقة التعريف الوطنية (لصاحب السجل)",
+                nifLabel: "رقم التعريف الجبائي (NIF) للمؤسسة",
+            },
+            fr: {
+                lang: "العربية",
+                dir: "ltr",
+                title: "Devenez un partenaire de confiance",
+                desc: "Augmentez vos réservations, gérez vos plannings et maximisez vos profits en rejoignant le 1er réseau de salles de fêtes en Algérie.",
+                back: "Retour",
+                step1: "Données du responsable",
+                step2: "Détails de la salle & Paiement",
+                step3: "Vérification (KYB)",
+                prev: "Précédent",
+                next: "Suivant",
+                submit: "Envoyer la demande",
+                successTitle: "Demande reçue avec succès!",
+                successDesc: "Merci pour votre confiance. Votre demande est en cours d'examen par notre équipe pour vérifier les documents légaux.",
+                successCall: "Un représentant vous contactera sous 24h pour activer votre compte.",
+                // Step 1
+                fullNameLabel: "Nom et Prénom",
+                fullNamePlaceholder: "Ex: Ahmed Boualem",
+                roleLabel: "Fonction",
+                roleOwner: "Propriétaire",
+                roleManager: "Gérant / Directeur",
+                roleAgent: "Agent exclusif",
+                phoneLabel: "Numéro de téléphone",
+                emailLabel: "Adresse email",
+                // Step 2
+                hallNameLabel: "Nom commercial de la salle",
+                hallNamePlaceholder: "Ex: Salle des fêtes...",
+                stateLabel: "Wilaya",
+                state16: "Alger 16", state31: "Oran 31", state25: "Constantine 25", state19: "Sétif 19",
+                mapLinkLabel: "Lien Google Maps",
+                capacityLabel: "Capacité maximale",
+                priceLabel: "Tarif initial affiché (DZD)",
+                amenitiesLabel: "Services disponibles :",
+                amParking: "Parking sécurisé", amAc: "Climatisation", amCatering: "Restauration (Traiteur)",
+                amBrideRoom: "Suite de la mariée", amGenerator: "Groupe électrogène", amDj: "Décoration & DJ",
+                hallPhotosLabel: "Photos de la salle (Sélection multiple)",
+                hallPhotosDesc: "Uploadez au moins 3 photos de haute qualité (sélectionnez plusieurs).",
+                paymentMethodLabel: "Comment souhaitez-vous recevoir l'avance (Dépôt) ?",
+                ccpLabel: "Compte Postal Courant (CCP / RIP)",
+                ccpPlaceholder: "0012345678 99",
+                ribLabel: "Compte Bancaire (RIB) ou BaridiMob",
+                // Step 3
+                kybDesc: "Afin de garantir la transparence, veuillez fournir les documents légaux de votre entreprise.",
+                rcLabel: "Copie du Registre de Commerce",
+                rcFormat: "Format PDF ou image nette",
+                idLabel: "Copie de la carte d'identité nationale",
+                nifLabel: "Numéro d'Identification Fiscale (NIF)",
+            }
+        };
+
+        const PartnerPortal = () => {
+            const [lang, setLang] = useState('ar');
+            const [step, setStep] = useState(1);
+            const [isSubmitted, setIsSubmitted] = useState(false);
+            
+            const t = translations[lang];
+
+            useEffect(() => {
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('dir', t.dir);
+                document.title = lang === 'ar' ? "Zaffa DZ Partners | بوابة شركاء زفة دي زاد" : "Zaffa DZ Partenaires";
+            }, [lang, t.dir]);
+            
+            const toggleLang = () => setLang(prev => prev === 'ar' ? 'fr' : 'ar');
+
+            const handleNext = () => setStep(prev => Math.min(prev + 1, 3));
+            const handlePrev = () => setStep(prev => Math.max(prev - 1, 1));
+            
+            const handleSubmit = () => {
+                setIsSubmitted(true);
+            };
+
+            const renderStep1 = () => (
+                <div className="fade-in">
+                    <h2 className="step-title"><i className="fa-solid fa-user-shield"></i> {t.step1}</h2>
+                    <div className="input-row">
+                        <div className="input-group">
+                            <label><i className="fa-regular fa-user"></i> {t.fullNameLabel}</label>
+                            <input type="text" placeholder={t.fullNamePlaceholder} />
+                        </div>
+                        <div className="input-group">
+                            <label><i className="fa-solid fa-id-badge"></i> {t.roleLabel}</label>
+                            <select>
+                                <option>{t.roleOwner}</option>
+                                <option>{t.roleManager}</option>
+                                <option>{t.roleAgent}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="input-row">
+                        <div className="input-group">
+                            <label><i className="fa-solid fa-phone"></i> {t.phoneLabel}</label>
+                            <input type="tel" placeholder="05/06/07..." dir="ltr" />
+                        </div>
+                        <div className="input-group">
+                            <label><i className="fa-regular fa-envelope"></i> {t.emailLabel}</label>
+                            <input type="email" placeholder="contact@..." dir="ltr" />
+                        </div>
+                    </div>
+                </div>
+            );
+
+            const renderStep2 = () => (
+                <div className="fade-in">
+                    <h2 className="step-title"><i className="fa-solid fa-archway"></i> {t.step2}</h2>
+                    
+                    <div className="input-group">
+                        <label>{t.hallNameLabel}</label>
+                        <input type="text" placeholder={t.hallNamePlaceholder} />
+                    </div>
+                    <div className="input-row">
+                        <div className="input-group">
+                            <label>{t.stateLabel}</label>
+                            <select>
+                                <option>{t.state16}</option>
+                                <option>{t.state31}</option>
+                                <option>{t.state25}</option>
+                                <option>{t.state19}</option>
+                            </select>
+                        </div>
+                        <div className="input-group">
+                            <label>{t.mapLinkLabel}</label>
+                            <input type="url" placeholder="https://maps.google.com/..." dir="ltr" />
+                        </div>
+                    </div>
+                    <div className="input-row">
+                        <div className="input-group">
+                            <label>{t.capacityLabel}</label>
+                            <input type="number" placeholder="500" />
+                        </div>
+                        <div className="input-group">
+                            <label>{t.priceLabel}</label>
+                            <input type="number" placeholder="250000" />
+                        </div>
+                    </div>
+                    <div className="input-group">
+                        <label>{t.amenitiesLabel}</label>
+                        <div className="checkbox-grid">
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amParking}</label>
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amAc}</label>
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amCatering}</label>
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amBrideRoom}</label>
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amGenerator}</label>
+                            <label className="custom-checkbox"><input type="checkbox" /> {t.amDj}</label>
+                        </div>
+                    </div>
+
+                    <div className="section-separator"></div>
+                    
+                    <h3 style={{color: 'var(--primary-color)', marginBottom: '1rem', fontSize: '1.2rem'}}><i className="fa-regular fa-images"></i> {t.hallPhotosLabel}</h3>
+                    <div className="upload-zone photo-upload-zone">
+                        <i className="fa-solid fa-cloud-arrow-up"></i>
+                        <p>{t.hallPhotosDesc}</p>
+                        <span style={{fontSize: '0.8rem', color: '#999'}}>JPG, PNG (Max 5MB)</span>
+                        <input type="file" accept="image/*" multiple />
+                    </div>
+
+                    <div className="section-separator"></div>
+
+                    <h3 style={{color: 'var(--secondary-color)', marginBottom: '1rem', fontSize: '1.2rem'}}><i className="fa-solid fa-money-bill-transfer"></i> {t.paymentMethodLabel}</h3>
+                    <div className="input-row">
+                        <div className="input-group">
+                            <label><i className="fa-solid fa-credit-card" style={{color: '#d4af37'}}></i> {t.ccpLabel}</label>
+                            <input type="text" placeholder={t.ccpPlaceholder} dir="ltr" />
+                        </div>
+                        <div className="input-group">
+                            <label><i className="fa-solid fa-building-columns" style={{color: '#531c70'}}></i> {t.ribLabel}</label>
+                            <input type="text" placeholder="RIB..." dir="ltr" />
+                        </div>
+                    </div>
+                </div>
+            );
+
+            const renderStep3 = () => (
+                <div className="fade-in">
+                    <h2 className="step-title"><i className="fa-solid fa-file-contract"></i> {t.step3}</h2>
+                    <p style={{marginBottom: '2rem', color: '#666'}}>
+                        {t.kybDesc}
+                    </p>
+                    
+                    <div className="upload-zone">
+                        <i className="fa-solid fa-file-invoice"></i>
+                        <p>{t.rcLabel}</p>
+                        <span style={{fontSize: '0.8rem', color: '#999'}}>{t.rcFormat}</span>
+                        <input type="file" accept="image/*,.pdf" />
+                    </div>
+
+                    <div className="upload-zone">
+                        <i className="fa-regular fa-id-card"></i>
+                        <p>{t.idLabel}</p>
+                        <input type="file" accept="image/*,.pdf" />
+                    </div>
+
+                    <div className="input-group">
+                        <label>{t.nifLabel}</label>
+                        <input type="text" placeholder="NIF..." dir="ltr" />
+                    </div>
+                </div>
+            );
+
+            if (isSubmitted) {
+                return (
+                    <div>
+                        <nav className="navbar">
+                            <a href="./index.html" className="logo">
+                                <img src="./logo.png" alt="Zaffa DZ Logo" />
+                                <span>Zaffa DZ</span>
+                            </a>
+                        </nav>
+                        <div className="portal-container">
+                            <div className="form-card success-state">
+                                <i className="fa-solid fa-circle-check"></i>
+                                <h2>{t.successTitle}</h2>
+                                <p>{t.successDesc}</p>
+                                <p style={{fontWeight: 600, marginTop: '1rem'}}>{t.successCall}</p>
+                                
+                                <a href="./index.html" className="btn-outline" style={{display: 'inline-flex', marginTop: '2rem'}}>
+                                    {t.back}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div>
+                    <nav className="navbar">
+                        <a href="./index.html" className="logo">
+                            <img src="./logo.png" alt="Zaffa DZ Logo" />
+                            <span>Zaffa DZ</span>
+                        </a>
+                        <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                            <button onClick={toggleLang} className="btn-outline" style={{border: 'none', background: 'transparent', cursor: 'pointer', padding: '0.6rem'}}>
+                                <i className="fa-solid fa-globe"></i> {t.lang}
+                            </button>
+                            <a href="./index.html" className="btn-outline">
+                                <i className={lang === 'ar' ? "fa-solid fa-arrow-right" : "fa-solid fa-arrow-left"}></i>
+                                <span>{t.back}</span>
+                            </a>
+                        </div>
+                    </nav>
+
+                    <div className="portal-container">
+                        <div className="header-section">
+                            <h1>{t.title}</h1>
+                            <p>{t.desc}</p>
+                        </div>
+
+                        <div className="stepper">
+                            <div className="stepper-progress" style={{width: `${(step - 1) * 50}%`}}></div>
+                            <div className={`step ${step >= 1 ? 'completed' : ''}`}>1</div>
+                            <div className={`step ${step >= 2 ? (step === 2 ? 'active' : 'completed') : ''}`}>2</div>
+                            <div className={`step ${step >= 3 ? 'active' : ''}`}>3</div>
+                        </div>
+
+                        <div className="form-card">
+                            {step === 1 && renderStep1()}
+                            {step === 2 && renderStep2()}
+                            {step === 3 && renderStep3()}
+
+                            <div className="actions">
+                                {step > 1 ? (
+                                    <button className="btn-prev" onClick={handlePrev}>
+                                        <i className={lang === 'ar' ? "fa-solid fa-angle-right" : "fa-solid fa-angle-left"}></i> {t.prev}
+                                    </button>
+                                ) : <div></div>}
+                                
+                                {step < 3 ? (
+                                    <button className="btn-next" onClick={handleNext}>
+                                        {t.next} <i className={lang === 'ar' ? "fa-solid fa-angle-left" : "fa-solid fa-angle-right"}></i>
+                                    </button>
+                                ) : (
+                                    <button className="btn-submit" onClick={handleSubmit}>
+                                        <i className="fa-solid fa-paper-plane"></i> {t.submit}
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<PartnerPortal />);
+    </script>
+</body>
+
+</html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -24,51 +23,17 @@
 
     <style>
         :root {
-            --primary-color: #531c70;
-            /* Rich Purple */
-            --secondary-color: #d4af37;
-            /* Elegant Gold */
-            --bg-color: #fdfdfd;
-            --surface-color: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-light: #fdfdfd;
-            --border-radius: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Language specific fonts */
-        body[lang="ar"] {
-            font-family: 'Cairo', sans-serif;
-            direction: rtl;
-        }
-
-        body[lang="fr"] {
-            font-family: 'Outfit', sans-serif;
-            direction: ltr;
-        }
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaffa DZ - زفّة دي زيد | نظم حفلتك بسهولة</title>
-    
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        /* تعريف المتغيرات للألوان والهوية البصرية */
-        :root {
-            --primary-purple: #4A148C; /* بنفسجي ملكي */
-            --secondary-gold: #D4AF37;  /* ذهبي متزن */
-            --light-gold: #FDF5E6;      /* ذهبي فاتح جداً للخلفيات */
+            --primary-purple: #4A148C;
+            /* بنفسجي ملكي */
+            --secondary-gold: #D4AF37;
+            /* ذهبي متزن */
+            --light-gold: #FDF5E6;
+            /* ذهبي فاتح جداً للخلفيات */
             --white: #FFFFFF;
             --text-dark: #333333;
             --text-light: #757575;
-            --shadow-soft: 0 4px 15px rgba(0,0,0,0.05);
-            
+            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+
             /* إعدادات الحواف الدائرية */
             --radius-lg: 20px;
             --radius-md: 12px;
@@ -81,13 +46,13 @@
 
         /* استيراد الخطوط من Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Poppins:wght@400;600&display=swap');
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-<<<<<<< HEAD
+            transition: all 0.3s ease;
+            /* تأثير ناعم لكل الانتقالات */
         }
 
         body {
@@ -143,6 +108,270 @@
         .lang-switch:hover {
             background: var(--primary-color);
             color: var(--text-light);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-owner {
+            background: linear-gradient(135deg, var(--secondary-color), #b8962e);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.25rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .btn-owner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            filter: brightness(1.05);
+        }
+
+        .top-bar {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 4rem;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .top-bar-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .top-bar-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-bar-info i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        .ticker-wrap {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 10px 0;
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Search Bar */
+        .search-bar-container {
+            max-width: 1000px;
+            margin: -4rem auto 4rem;
+            background: var(--surface-color);
+            padding: 1.5rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr) auto;
+            gap: 1.5rem;
+            align-items: end;
+        }
+
+        .search-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .search-input-group label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-input-group label i {
+            color: var(--secondary-color);
+        }
+
+        .search-input-group select,
+        .search-input-group input {
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+            background-color: #fcfcfc;
+        }
+
+        .search-input-group select:focus,
+        .search-input-group input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-search {
+            height: auto;
+            padding: 0.9rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #2d0b40);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(83, 28, 112, 0.2);
+            font-family: inherit;
+        }
+
+        .btn-search:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(83, 28, 112, 0.3);
+        }
+
+        /* Wishlist & Amenities */
+        .btn-wishlist {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            color: #ccc;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4px);
+        }
+
+        body[lang="fr"] .btn-wishlist {
+            left: auto;
+            right: 20px;
+        }
+
+        .btn-wishlist:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-wishlist.active {
+            color: #ff4b4b;
+            animation: heartPulse 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes heartPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .amenities-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            color: #666;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #fdfdfd;
+            padding: 6px 12px;
+            border-radius: 50px;
+            border: 1px solid #f0f0f0;
+            font-weight: 600;
+        }
+
+        .amenity i {
+            color: var(--secondary-color);
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: pulse-wa 2s infinite;
+        }
+
+        body[lang="fr"] .floating-whatsapp {
+            right: auto;
+            left: 30px;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        @keyframes pulse-wa {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         /* Hero */
@@ -289,208 +518,18 @@
 
         .hall-img {
             width: 100%;
-            height: 350px;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hall-card:hover .hall-img {
-            transform: scale(1.08);
-        }
-
-        .img-container {
-=======
-            transition: all 0.3s ease; /* تأثير ناعم لكل الانتقالات */
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        /* إعدادات الخط بناءً على اللغة */
-        body.lang-ar { font-family: var(--font-ar); direction: rtl; }
-        body.lang-fr { font-family: var(--font-fr); direction: ltr; }
-
-        /* تجميل شريط التمرير */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--white); }
-        ::-webkit-scrollbar-thumb { background: var(--secondary-gold); border-radius: 10px; }
-
-        /* الهيكل العام (Container) */
-        #root { display: flex; flex-direction: column; min-height: 100vh; }
-
-        /* --- Header & Navigation --- */
-        header {
-            background-color: var(--white);
-            padding: 15px 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-soft);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* مفهوم الشعار (Stylized Hall + Minimal Ring) */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            border: 3px solid var(--secondary-gold); /* Minimal Ring */
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-icon::after {
-            content: '\f0f2'; /* أيقونة قاعة/بناء من FontAwesome */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--primary-purple);
-            font-size: 1.2rem;
-        }
-
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary-purple);
-        }
-        
-        .logo-text span { color: var(--secondary-gold); }
-
-        .nav-actions { display: flex; gap: 15px; align-items: center; }
-
-        .btn-lang {
-            background: none;
-            border: 1px solid var(--secondary-gold);
-            color: var(--secondary-gold);
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-lang:hover {
-            background-color: var(--secondary-gold);
-            color: var(--white);
-        }
-
-        /* --- Hero Section (الواجهة الرئيسية) --- */
-        .hero {
-            margin-top: 80px; /* للتعويض عن الهيدر المثبت */
-            padding: 100px 5% 60px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gold) 100%);
-        }
-
-        .hero h1 {
-            color: var(--primary-purple);
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-
-        .hero p {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* --- Buttons Style (الأزرار الواضحة) --- */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 35px;
-            border-radius: 50px; /* Rounded Edges complete */
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-purple);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(74, 20, 140, 0.4);
-        }
-
-        /* --- Main Content & Hall Grid (صور كبيرة، Clean UI) --- */
-        main { padding: 60px 5%; flex: 1; }
-
-        .section-title {
-            color: var(--primary-purple);
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-gold);
-            border-radius: 2px;
-        }
-
-        .hall-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        /* كارت القاعة (Minimal & Rounded) */
-        .hall-card {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .hall-card:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transform: translateY(-5px);
-        }
-
-        /* صورة كبيرة للقاعة */
-        .hall-image-wrapper {
-            width: 100%;
             height: 250px;
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
             overflow: hidden;
             position: relative;
         }
 
-<<<<<<< HEAD
-        .badge {
+        .hall-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hall-tag {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -549,6 +588,235 @@
             color: var(--secondary-color);
         }
 
+        /* Booking Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            padding: 1rem;
+        }
+
+        .booking-modal {
+            background: var(--surface-color);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body[lang="fr"] .close-modal {
+            right: auto;
+            left: 20px;
+        }
+
+        .close-modal:hover {
+            color: #ff4b4b;
+            transform: scale(1.1);
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-hall {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+
+        /* Calendar Grid */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .calendar-header button {
+            background: #f0f0f0;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calendar-header button:hover {
+            background: #e0e0e0;
+        }
+
+        .calendar-days-label {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .calendar-day:not(.unavailable):not(.empty):hover {
+            border-color: var(--secondary-color);
+            background: #fff8eb;
+        }
+
+        .calendar-day.selected {
+            background: var(--secondary-color);
+            color: #fff;
+            border-color: var(--secondary-color);
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .calendar-day.unavailable {
+            background: #fafafa;
+            color: #ccc;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .calendar-day.empty {
+            border: none;
+            cursor: default;
+        }
+
+        /* Payment Options */
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .payment-card {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-card:hover,
+        .payment-card.selected {
+            border-color: var(--primary-color);
+            background: #fbf8fc;
+        }
+
+        .payment-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .payment-info i {
+            font-size: 1.5rem;
+        }
+
+        .payment-card.selected .payment-info i {
+            color: var(--primary-color);
+        }
+
+        .booking-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            background: linear-gradient(135deg, var(--secondary-color), #b8962e);
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-confirm:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-confirm:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
         /* Footer */
         .footer {
             background: var(--primary-color);
@@ -559,121 +827,17 @@
             border-top-right-radius: 50px;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-=======
-        .hall-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .hall-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(212, 175, 55, 0.9);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        body.lang-fr .hall-tag { right: auto; left: 15px; }
-
-        .hall-info { padding: 25px; }
-
-        .hall-name {
-            color: var(--primary-purple);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .hall-location {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-
-        .hall-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .btn-card {
-            flex: 1;
-            padding: 12px;
-            text-align: center;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-
-        .btn-book {
-            background-color: var(--secondary-gold);
-            color: var(--white);
-        }
-        
-        .btn-book:hover { background-color: #c09e31; }
-
-        .btn-dates {
-            background-color: var(--light-gold);
-            color: var(--secondary-gold);
-            border: 1px solid var(--secondary-gold);
-        }
-        
-        .btn-dates:hover { background-color: #fcebd0; }
-
-        /* --- Footer (Instagram, TikTok, WhatsApp) --- */
-        footer {
-            background-color: var(--primary-purple);
-            color: var(--white);
-            padding: 40px 5% 20px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .footer-logo span { color: var(--secondary-gold); }
-
         .footer-slogan {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 30px;
             font-size: 1rem;
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
         }
 
         .social-links {
             display: flex;
-<<<<<<< HEAD
-            gap: 1.5rem;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
         }
 
         .social-link {
@@ -719,9 +883,50 @@
             font-size: 1rem;
         }
 
+        .hide-mobile {
+            display: inline-block;
+        }
+
         @media (max-width: 768px) {
+            .search-bar-container {
+                grid-template-columns: 1fr;
+                margin: -3rem 1.5rem 3rem;
+                gap: 1.2rem;
+                padding: 1.5rem;
+            }
+
+            .btn-search {
+                padding: 1.2rem;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 1rem;
+                text-align: center;
+            }
+
+            .top-bar-info {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hide-mobile {
+                display: none;
+            }
+
+            .btn-owner {
+                padding: 0.6rem;
+                justify-content: center;
+            }
+
             .navbar {
-                padding: 1.5rem 2rem;
+                padding: 1.5rem 1rem;
+            }
+
+            .nav-actions {
+                gap: 0.5rem;
             }
 
             .hero {
@@ -765,68 +970,24 @@
     </style>
 </head>
 
-<body>
+<body class="lang-ar">
     <div id="root"></div>
-=======
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .social-icon {
-            color: var(--white);
-            font-size: 1.8rem;
-            text-decoration: none;
-            opacity: 0.8;
-        }
-
-        .social-icon:hover {
-            opacity: 1;
-            color: var(--secondary-gold);
-            transform: scale(1.1);
-        }
-
-        .copyright {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-        }
-
-        /* --- استجابة الهواتف (Responsiveness) --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            .logo-text { font-size: 1.3rem; }
-            .hall-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body class="lang-ar"> <div id="root"></div>
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-<<<<<<< HEAD
-        const translations = {
+        // بيانات الواجهة النصية (Translations)
+        const content = {
             ar: {
-                lang: "Français",
-                slogan1: "نظم حفلتك بسهولة",
-                slogan2: "احجز و خلي الباقي علينا",
-                desc: "كلش منظم بلا صداع راس. اكتشف أفخم قاعات الأعراس والمناسبات في الجزائر، احجزها بضغطة زر.",
-                bookNow: "احجز الآن",
-                seeDates: "شوف المواعيد",
-                ourHalls: "اكتشف قاعاتنا",
-                hall1Name: "قاعة الأميرة الفضية",
-                hall2Name: "حديقة الأحلام المفتوحة",
-                location1: "الجزائر العاصمة",
-                location2: "وهران",
-                priceLabel: "ابتداءً من",
-                footerTitle: "ابقى على تواصل معنا",
-                footerDesc: "تابعنا على منصات التواصل الاجتماعي لمعرفة آخر العروض وأجمل القاعات.",
-                rights: "© 2026 زفة دي زاد. جميع الحقوق محفوظة.",
-                topRated: "الأعلى تقييماً"
+                sloganHtml: <>نظم حفلتك بسهولة<br />احجز و خلي الباقي علينا</>,
+                subSlogan: "كلش منظم بلا صداع راس. اكتشف أفضل قاعات الأفراح في الجزائر واحجز موعدك في لحظات.",
+                ctaMain: "اكتشف القاعات",
+                ourHalls: "أبرز القاعات المتاحة",
+                btnBook: "احجز الآن",
+                btnDates: "شوف المواعيد",
+                langBtn: "English",
+                location: "الجزائر العاصمة",
+                hallTag: "ممتازة"
             },
             fr: {
                 lang: "العربية",
@@ -844,21 +1005,70 @@
                 footerTitle: "Restons en contact",
                 footerDesc: "Suivez-nous sur les réseaux sociaux pour découvrir nos dernières offres.",
                 rights: "© 2026 Zaffa DZ. Tous droits réservés.",
-                topRated: "Mieux Noté"
+                topRated: "Mieux Noté",
+                ownerRegister: "Espace Propriétaires",
+                visitors: "Visiteurs:",
+                news1: "Ouverture des inscriptions pour les propriétaires de salles",
+                news2: "Offres de lancement allant jusqu'à 20% de réduction",
+                news3: "Réservez votre salle maintenant facilement avec Zaffa DZ",
+                searchBtn: "Rechercher",
+                city: "Wilaya",
+                allCities: "Toutes les wilayas",
+                guests: "Capacité",
+                budget: "Budget (DZD)",
+                capacityLabel: "personnes",
+                wishlistTooltip: "Ajouter aux favoris",
+                bookTitle: "Finaliser la réservation",
+                selectDateLabel: "Choisissez la date (Jours dispo)",
+                monthName: "Avril/Mai 2026",
+                sat: "Sam", sun: "Dim", mon: "Lun", tue: "Mar", wed: "Mer", thu: "Jeu", fri: "Ven",
+                paymentLabel: "Moyen de paiement (Avance: 50,000 DZD)",
+                edahabia: "Carte Edahabia",
+                cib: "Carte CIB",
+                baridimob: "Application BaridiMob",
+                confirmBooking: "Confirmer le paiement",
+                cancel: "Annuler",
+                bookingSuccess: "Félicitations! Votre paiement est réussi et la salle est réservée."
             }
         };
 
         const App = () => {
             const [lang, setLang] = useState('ar');
+            const [wishlist, setWishlist] = useState([]);
+            const [selectedHall, setSelectedHall] = useState(null);
+            const [selectedDate, setSelectedDate] = useState(null);
+            const [paymentMethod, setPaymentMethod] = useState(null);
+            const [bookingSuccess, setBookingSuccess] = useState(false);
+
             const t = translations[lang];
 
             useEffect(() => {
+                document.documentElement.setAttribute('lang', lang);
+                document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
                 document.body.setAttribute('lang', lang);
                 document.title = lang === 'ar' ? "Zaffa DZ | زفة دي زاد" : "Zaffa DZ | Réservation de Salles";
             }, [lang]);
 
             const toggleLang = () => {
                 setLang(prev => prev === 'ar' ? 'fr' : 'ar');
+            };
+
+            const toggleWishlist = (id) => {
+                setWishlist(prev => prev.includes(id) ? prev.filter(wId => wId !== id) : [...prev, id]);
+            };
+
+            const openBooking = (hall) => {
+                setSelectedHall(hall);
+                setSelectedDate(null);
+                setPaymentMethod(null);
+                setBookingSuccess(false);
+            };
+
+            const confirmBooking = () => {
+                setBookingSuccess(true);
+                setTimeout(() => {
+                    setSelectedHall(null);
+                }, 3000);
             };
 
             const halls = [
@@ -868,7 +1078,12 @@
                     location: t.location1,
                     image: './hall_1.png',
                     price: "450,000 DZD",
-                    topRated: true
+                    topRated: true,
+                    capacity: 500,
+                    parking: true,
+                    ac: true,
+                    catering: true,
+                    bookedDays: [3, 4, 10, 15, 22] // Mock unavailable days (1-30)
                 },
                 {
                     id: 2,
@@ -876,21 +1091,155 @@
                     location: t.location2,
                     image: './hall_2.png',
                     price: "320,000 DZD",
-                    topRated: false
+                    topRated: false,
+                    capacity: 350,
+                    parking: true,
+                    ac: true,
+                    catering: false,
+                    bookedDays: [1, 2, 8, 9, 14, 25] // Mock unavailable days
                 }
             ];
 
+            const renderCalendar = () => {
+                // Mock simple calendar array (30 days total starting with empty spaces based on month)
+                const days = [];
+                // 3 empty days
+                for (let i = 0; i < 3; i++) days.push({ empty: true, day: `e${i}` });
+                // 30 actual days
+                for (let i = 1; i <= 30; i++) {
+                    const unavailable = selectedHall.bookedDays.includes(i);
+                    days.push({ empty: false, day: i, unavailable });
+                }
+
+                return (
+                    <div>
+                        <p style={{ fontWeight: 600, marginBottom: '10px' }}>{t.selectDateLabel}</p>
+                        <div className="calendar-header">
+                            <button><i className={lang === 'ar' ? "fa-solid fa-angle-right" : "fa-solid fa-angle-left"}></i></button>
+                            <span>{t.monthName}</span>
+                            <button><i className={lang === 'ar' ? "fa-solid fa-angle-left" : "fa-solid fa-angle-right"}></i></button>
+                        </div>
+                        <div className="calendar-days-label">
+                            <span>{t.sat}</span><span>{t.sun}</span><span>{t.mon}</span>
+                            <span>{t.tue}</span><span>{t.wed}</span><span>{t.thu}</span><span>{t.fri}</span>
+                        </div>
+                        <div className="calendar-grid">
+                            {days.map((d) => (
+                                <div
+                                    key={d.day}
+                                    className={`calendar-day ${d.empty ? 'empty' : ''} ${d.unavailable ? 'unavailable' : ''} ${selectedDate === d.day ? 'selected' : ''}`}
+                                    onClick={() => !d.empty && !d.unavailable && setSelectedDate(d.day)}
+                                >
+                                    {!d.empty && d.day}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            };
+
+            const renderModal = () => {
+                if (!selectedHall) return null;
+
+                if (bookingSuccess) {
+                    return (
+                        <div className="modal-overlay">
+                            <div className="booking-modal" style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+                                <i className="fa-solid fa-circle-check" style={{ fontSize: '5rem', color: '#25D366', marginBottom: '1.5rem' }}></i>
+                                <h2 className="modal-title" style={{ justifyContent: 'center' }}>{t.bookingSuccess}</h2>
+                            </div>
+                        </div>
+                    );
+                }
+
+                return (
+                    <div className="modal-overlay">
+                        <div className="booking-modal">
+                            <button className="close-modal" onClick={() => setSelectedHall(null)}><i className="fa-solid fa-xmark"></i></button>
+                            <h2 className="modal-title"><i className="fa-regular fa-calendar-check"></i> {t.bookTitle}</h2>
+                            <div className="modal-hall">{selectedHall.name} - {selectedHall.location}</div>
+
+                            {renderCalendar()}
+
+                            {selectedDate && (
+                                <div className="fade-in">
+                                    <p style={{ fontWeight: 600, marginBottom: '10px' }}>{t.paymentLabel}</p>
+                                    <div className="payment-options">
+                                        <div className={`payment-card ${paymentMethod === 'edahabia' ? 'selected' : ''}`} onClick={() => setPaymentMethod('edahabia')}>
+                                            <div className="payment-info">
+                                                <i className="fa-regular fa-credit-card"></i>
+                                                <span>{t.edahabia}</span>
+                                            </div>
+                                        </div>
+                                        <div className={`payment-card ${paymentMethod === 'cib' ? 'selected' : ''}`} onClick={() => setPaymentMethod('cib')}>
+                                            <div className="payment-info">
+                                                <i className="fa-solid fa-building-columns"></i>
+                                                <span>{t.cib}</span>
+                                            </div>
+                                        </div>
+                                        <div className={`payment-card ${paymentMethod === 'baridimob' ? 'selected' : ''}`} onClick={() => setPaymentMethod('baridimob')}>
+                                            <div className="payment-info">
+                                                <i className="fa-solid fa-mobile-screen"></i>
+                                                <span>{t.baridimob}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="booking-actions">
+                                        <button className="btn-cancel" onClick={() => setSelectedHall(null)}>{t.cancel}</button>
+                                        <button className="btn-confirm" disabled={!paymentMethod} onClick={confirmBooking}>
+                                            <i className="fa-solid fa-lock"></i> {t.confirmBooking}
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                );
+            };
+
             return (
                 <div>
+                    <div className="top-bar">
+                        <div className="top-bar-info">
+                            <span><i className="fa-solid fa-users"></i> {t.visitors} 12,045</span>
+                        </div>
+                        <div className="top-bar-info" style={{ gap: '1.5rem' }}>
+                            <span><i className="fa-solid fa-envelope"></i> contact@zaffadz.com</span>
+                            <span className="hide-mobile"><i className="fa-solid fa-phone"></i> +213 555 12 34 56</span>
+                        </div>
+                    </div>
+                    <div className="ticker-wrap">
+                        <marquee direction={lang === 'ar' ? 'right' : 'left'} scrollamount="6">
+                            <span style={{ marginInlineEnd: '5rem' }}>
+                                <i className="fa-solid fa-bell" style={{ marginInlineEnd: '8px' }}></i>
+                                {t.news1}
+                            </span>
+                            <span style={{ marginInlineEnd: '5rem' }}>
+                                <i className="fa-solid fa-bell" style={{ marginInlineEnd: '8px' }}></i>
+                                {t.news2}
+                            </span>
+                            <span style={{ marginInlineEnd: '5rem' }}>
+                                <i className="fa-solid fa-bell" style={{ marginInlineEnd: '8px' }}></i>
+                                {t.news3}
+                            </span>
+                        </marquee>
+                    </div>
                     <nav className="navbar">
                         <div className="logo">
                             <img src="./logo.png" alt="Zaffa DZ Logo" />
                             <span>Zaffa DZ</span>
                         </div>
-                        <button className="lang-switch" onClick={toggleLang}>
-                            <i className="fa-solid fa-globe"></i>
-                            {t.lang}
-                        </button>
+                        <div className="nav-actions">
+                            <a href="./partner.html" className="btn-owner" title={t.ownerRegister}>
+                                <i className="fa-solid fa-user-tie"></i>
+                                <span className="hide-mobile">{t.ownerRegister}</span>
+                            </a>
+                            <button className="lang-switch" onClick={toggleLang}>
+                                <i className="fa-solid fa-globe"></i>
+                                {t.lang}
+                            </button>
+                        </div>
                     </nav>
 
                     <section className="hero">
@@ -898,122 +1247,59 @@
                         <h2>{t.slogan2}</h2>
                         <p>{t.desc}</p>
                         <div className="hero-buttons">
-                            <button className="btn-primary">
+                            <button className="btn-primary" onClick={() => openBooking(halls[0])}>
                                 <i className="fa-regular fa-calendar-check"></i>
                                 {t.bookNow}
                             </button>
-                            <button className="btn-secondary">
+                            <button className="btn-secondary" onClick={() => openBooking(halls[0])}>
                                 <i className="fa-regular fa-clock"></i>
                                 {t.seeDates}
                             </button>
                         </div>
                     </section>
 
-                    <section className="halls-section">
+                    <div className="search-bar-container">
+                        <div className="search-input-group">
+                            <label><i className="fa-solid fa-location-dot"></i> {t.city}</label>
+                            <select>
+                                <option value="">{t.allCities}</option>
+                                <option value="algiers">{t.location1}</option>
+                                <option value="oran">{t.location2}</option>
+                            </select>
+                        </div>
+                        <div className="search-input-group">
+                            <label><i className="fa-solid fa-users"></i> {t.guests}</label>
+                            <select>
+                                <option value="">---</option>
+                                <option value="100">100 - 300</option>
+                                <option value="300">300 - 500</option>
+                                <option value="500">+500</option>
+                            </select>
+                        </div>
+                        <div className="search-input-group">
+                            <label><i className="fa-solid fa-wallet"></i> {t.budget}</label>
+                            <input type="text" placeholder="..." />
+                        </div>
+                        <button className="btn-search">
+                            <i className="fa-solid fa-magnifying-glass"></i> {t.searchBtn}
+                        </button>
+                    </div>
+
+                    <section className="halls-section" style={{ paddingTop: '2rem' }}>
                         <h3 className="section-title">{t.ourHalls}</h3>
                         <div className="halls-grid">
                             {halls.map(hall => (
                                 <div className="hall-card" key={hall.id}>
                                     <div className="img-container">
                                         {hall.topRated && <div className="badge"><i className="fa-solid fa-star" style={{ color: '#fff', marginInlineEnd: '4px' }}></i>{t.topRated}</div>}
+                                        <button
+                                            className={`btn-wishlist ${wishlist.includes(hall.id) ? 'active' : ''}`}
+                                            onClick={() => toggleWishlist(hall.id)}
+                                            title={t.wishlistTooltip}
+                                        >
+                                            <i className={wishlist.includes(hall.id) ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
+                                        </button>
                                         <img src={hall.image} alt={hall.name} className="hall-img" />
-                                    </div>
-                                    <div className="hall-content">
-                                        <h4 className="hall-title">{hall.name}</h4>
-                                        <div className="hall-location">
-                                            <i className="fa-solid fa-location-dot" style={{ color: '#d4af37' }}></i>
-                                            {hall.location}
-                                        </div>
-                                        <div className="hall-footer">
-                                            <div>
-                                                <span className="price-label">{t.priceLabel}</span>
-                                                <div className="price">{hall.price}</div>
-                                            </div>
-                                            <button className="btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
-                                                {t.bookNow}
-                                            </button>
-=======
-        // بيانات الواجهة النصية (Translations)
-        const content = {
-            ar: {
-                sloganHtml: <>نظم حفلتك بسهولة<br/>احجز و خلي الباقي علينا</>,
-                subSlogan: "كلش منظم بلا صداع راس. اكتشف أفضل قاعات الأفراح في الجزائر واحجز موعدك في لحظات.",
-                ctaMain: "اكتشف القاعات",
-                ourHalls: "أبرز القاعات المتاحة",
-                btnBook: "احجز الآن",
-                btnDates: "شوف المواعيد",
-                langBtn: "English",
-                location: "الجزائر العاصمة",
-                hallTag: "ممتازة"
-            },
-            fr: {
-                sloganHtml: <>Organisez votre fête facilement<br/>Réservez, on s'occupe du reste</>,
-                subSlogan: "Tout est organisé, pas de prise de tête. Découvrez les meilleures salles des fêtes en Algérie.",
-                ctaMain: "Découvrir les salles",
-                ourHalls: "Nos Salles Vedettes",
-                btnBook: "Réserver",
-                btnDates: "Voir les dates",
-                langBtn: "العربية",
-                location: "Alger",
-                hallTag: "Premium"
-            }
-        };
-
-        // بيانات وهمية للقاعات (صور كبيرة)
-        const mockHalls = [
-            { id: 1, nameAr: "قاعة الياقوت الملكية", nameFr: "Salle Royale El Yakout", img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1000&auto=format&fit=crop" },
-            { id: 2, nameAr: "قصر الأفراح - ميلة", nameFr: "Palais des Fêtes - Mila", img: "https://images.unsplash.com/photo-1519741497674-611580205973?q=80&w=1000&auto=format&fit=crop" },
-            { id: 3, nameAr: "فيلا دار الضيافة", nameFr: "Villa Dar Diafa", img: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1000&auto=format&fit=crop" }
-        ];
-
-        // المكون الرئيسي للتطبيق
-        function App() {
-            const [lang, setLang] = useState('ar');
-            const t = content[lang]; // النصوص الحالية بناءً على اللغة
-
-            // تغيير اللغة وتحديث كلاس الـ body للاتجاهات والخطوط
-            const toggleLang = () => {
-                const newLang = lang === 'ar' ? 'fr' : 'ar';
-                setLang(newLang);
-                document.body.className = `lang-${newLang}`;
-                document.documentElement.lang = newLang;
-                document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-            };
-
-            return (
-                <React.Fragment>
-                    {/* --- Header --- */}
-                    <header>
-                        <a href="#" className="logo-container">
-                            <div className="logo-icon"></div> {/* Minimal Ring + Stylized Hall */}
-                            <div className="logo-text">Zaffa<span>DZ</span></div>
-                        </a>
-                        <div className="nav-actions">
-                            <button className="btn-lang" onClick={toggleLang}>
-                                {t.langBtn}
-                            </button>
-                        </div>
-                    </header>
-
-                    {/* --- Hero Section --- */}
-                    <section className="hero">
-                        <h1>{t.sloganHtml}</h1>
-                        <p>{t.subSlogan}</p>
-                        <a href="#halls" className="btn btn-primary">
-                            <i className="fas fa-search"></i>
-                            {t.ctaMain}
-                        </a>
-                    </section>
-
-                    {/* --- Main Content (Halls) --- */}
-                    <main id="halls">
-                        <h2 className="section-title">{t.ourHalls}</h2>
-                        <div className="hall-grid">
-                            {mockHalls.map(hall => (
-                                <div className="hall-card" key={hall.id}>
-                                    <div className="hall-image-wrapper">
-                                        <img src={hall.img} alt={lang === 'ar' ? hall.nameAr : hall.nameFr} className="hall-image" />
-                                        <span className="hall-tag">{t.hallTag}</span>
                                     </div>
                                     <div className="hall-info">
                                         <h3 className="hall-name">
@@ -1026,14 +1312,29 @@
                                         <div className="hall-actions">
                                             <a href="#" className="btn-card btn-book">{t.btnBook}</a>
                                             <a href="#" className="btn-card btn-dates">{t.btnDates}</a>
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
+                                        </div>
+                                        <div className="amenities-row">
+                                            <span className="amenity" title="Capacity"><i className="fa-solid fa-users-line"></i> {hall.capacity} {t.capacityLabel}</span>
+                                            {hall.parking && <span className="amenity" title="Parking"><i className="fa-solid fa-square-parking"></i></span>}
+                                            {hall.ac && <span className="amenity" title="Air Conditioning"><i className="fa-solid fa-snowflake"></i></span>}
+                                            {hall.catering && <span className="amenity" title="Catering"><i className="fa-solid fa-utensils"></i></span>}
+                                        </div>
+                                        <div className="hall-footer">
+                                            <div>
+                                                <span className="price-label">{t.priceLabel}</span>
+                                                <div className="price">{hall.price}</div>
+                                            </div>
+                                            <button className="btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }} onClick={() => openBooking(hall)}>
+                                                {t.bookNow}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
-<<<<<<< HEAD
-                    </section>
+                    </main>
+
+                    {renderModal()}
 
                     <footer className="footer">
                         <div className="footer-content">
@@ -1052,41 +1353,17 @@
                             {t.rights}
                         </div>
                     </footer>
+                    <a href="https://wa.me/213555123456" className="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <i className="fa-brands fa-whatsapp"></i>
+                    </a>
                 </div>
             );
         };
 
-=======
-                    </main>
-
-                    {/* --- Footer --- */}
-                    <footer>
-                        <div className="footer-logo">Zaffa<span>DZ</span></div>
-                        <p className="footer-slogan">{lang === 'ar' ? "نظم حفلتك بسهولة" : "Organisez votre fête facilement"}</p>
-                        
-                        <div className="social-links">
-                            {/* روابط التواصل المطلوبة */}
-                            <a href="#" className="social-icon" title="Instagram"><i className="fab fa-instagram"></i></a>
-                            <a href="#" className="social-icon" title="TikTok"><i className="fab fa-tiktok"></i></a>
-                            <a href="#" className="social-icon" title="WhatsApp"><i className="fab fa-whatsapp"></i></a>
-                        </div>
-                        
-                        <div className="copyright">
-                            &copy; {new Date().getFullYear()} Zaffa DZ. All rights reserved.
-                        </div>
-                    </footer>
-                </React.Fragment>
-            );
-        }
-
         // رندرينغ للتطبيق داخل الـ root div
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
-<<<<<<< HEAD
 
-=======
->>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 </html>
