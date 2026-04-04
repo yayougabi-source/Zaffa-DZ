@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8">
@@ -45,11 +46,48 @@
             font-family: 'Outfit', sans-serif;
             direction: ltr;
         }
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaffa DZ - زفّة دي زيد | نظم حفلتك بسهولة</title>
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* تعريف المتغيرات للألوان والهوية البصرية */
+        :root {
+            --primary-purple: #4A148C; /* بنفسجي ملكي */
+            --secondary-gold: #D4AF37;  /* ذهبي متزن */
+            --light-gold: #FDF5E6;      /* ذهبي فاتح جداً للخلفيات */
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --text-light: #757575;
+            --shadow-soft: 0 4px 15px rgba(0,0,0,0.05);
+            
+            /* إعدادات الحواف الدائرية */
+            --radius-lg: 20px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+
+            /* الخطوط الافتراضية */
+            --font-ar: 'Noto Sans Arabic', sans-serif;
+            --font-fr: 'Poppins', sans-serif;
+        }
+
+        /* استيراد الخطوط من Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&family=Poppins:wght@400;600&display=swap');
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+<<<<<<< HEAD
         }
 
         body {
@@ -261,10 +299,197 @@
         }
 
         .img-container {
+=======
+            transition: all 0.3s ease; /* تأثير ناعم لكل الانتقالات */
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* إعدادات الخط بناءً على اللغة */
+        body.lang-ar { font-family: var(--font-ar); direction: rtl; }
+        body.lang-fr { font-family: var(--font-fr); direction: ltr; }
+
+        /* تجميل شريط التمرير */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--white); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary-gold); border-radius: 10px; }
+
+        /* الهيكل العام (Container) */
+        #root { display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* مفهوم الشعار (Stylized Hall + Minimal Ring) */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--secondary-gold); /* Minimal Ring */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-icon::after {
+            content: '\f0f2'; /* أيقونة قاعة/بناء من FontAwesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-purple);
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+        }
+        
+        .logo-text span { color: var(--secondary-gold); }
+
+        .nav-actions { display: flex; gap: 15px; align-items: center; }
+
+        .btn-lang {
+            background: none;
+            border: 1px solid var(--secondary-gold);
+            color: var(--secondary-gold);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-lang:hover {
+            background-color: var(--secondary-gold);
+            color: var(--white);
+        }
+
+        /* --- Hero Section (الواجهة الرئيسية) --- */
+        .hero {
+            margin-top: 80px; /* للتعويض عن الهيدر المثبت */
+            padding: 100px 5% 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gold) 100%);
+        }
+
+        .hero h1 {
+            color: var(--primary-purple);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Buttons Style (الأزرار الواضحة) --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            border-radius: 50px; /* Rounded Edges complete */
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 20, 140, 0.4);
+        }
+
+        /* --- Main Content & Hall Grid (صور كبيرة، Clean UI) --- */
+        main { padding: 60px 5%; flex: 1; }
+
+        .section-title {
+            color: var(--primary-purple);
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-gold);
+            border-radius: 2px;
+        }
+
+        .hall-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* كارت القاعة (Minimal & Rounded) */
+        .hall-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .hall-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+        }
+
+        /* صورة كبيرة للقاعة */
+        .hall-image-wrapper {
+            width: 100%;
+            height: 250px;
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
             overflow: hidden;
             position: relative;
         }
 
+<<<<<<< HEAD
         .badge {
             position: absolute;
             top: 20px;
@@ -351,10 +576,103 @@
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
+=======
+        .hall-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hall-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(212, 175, 55, 0.9);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        body.lang-fr .hall-tag { right: auto; left: 15px; }
+
+        .hall-info { padding: 25px; }
+
+        .hall-name {
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hall-location {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .hall-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-card {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-book {
+            background-color: var(--secondary-gold);
+            color: var(--white);
+        }
+        
+        .btn-book:hover { background-color: #c09e31; }
+
+        .btn-dates {
+            background-color: var(--light-gold);
+            color: var(--secondary-gold);
+            border: 1px solid var(--secondary-gold);
+        }
+        
+        .btn-dates:hover { background-color: #fcebd0; }
+
+        /* --- Footer (Instagram, TikTok, WhatsApp) --- */
+        footer {
+            background-color: var(--primary-purple);
+            color: var(--white);
+            padding: 40px 5% 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .footer-logo span { color: var(--secondary-gold); }
+
+        .footer-slogan {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            font-size: 1rem;
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
         }
 
         .social-links {
             display: flex;
+<<<<<<< HEAD
             gap: 1.5rem;
         }
 
@@ -449,10 +767,48 @@
 
 <body>
     <div id="root"></div>
+=======
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            color: var(--white);
+            font-size: 1.8rem;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            color: var(--secondary-gold);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* --- استجابة الهواتف (Responsiveness) --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .logo-text { font-size: 1.3rem; }
+            .hall-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="lang-ar"> <div id="root"></div>
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 
     <script type="text/babel">
         const { useState, useEffect } = React;
 
+<<<<<<< HEAD
         const translations = {
             ar: {
                 lang: "Français",
@@ -576,11 +932,107 @@
                                             <button className="btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '1.1rem' }}>
                                                 {t.bookNow}
                                             </button>
+=======
+        // بيانات الواجهة النصية (Translations)
+        const content = {
+            ar: {
+                sloganHtml: <>نظم حفلتك بسهولة<br/>احجز و خلي الباقي علينا</>,
+                subSlogan: "كلش منظم بلا صداع راس. اكتشف أفضل قاعات الأفراح في الجزائر واحجز موعدك في لحظات.",
+                ctaMain: "اكتشف القاعات",
+                ourHalls: "أبرز القاعات المتاحة",
+                btnBook: "احجز الآن",
+                btnDates: "شوف المواعيد",
+                langBtn: "English",
+                location: "الجزائر العاصمة",
+                hallTag: "ممتازة"
+            },
+            fr: {
+                sloganHtml: <>Organisez votre fête facilement<br/>Réservez, on s'occupe du reste</>,
+                subSlogan: "Tout est organisé, pas de prise de tête. Découvrez les meilleures salles des fêtes en Algérie.",
+                ctaMain: "Découvrir les salles",
+                ourHalls: "Nos Salles Vedettes",
+                btnBook: "Réserver",
+                btnDates: "Voir les dates",
+                langBtn: "العربية",
+                location: "Alger",
+                hallTag: "Premium"
+            }
+        };
+
+        // بيانات وهمية للقاعات (صور كبيرة)
+        const mockHalls = [
+            { id: 1, nameAr: "قاعة الياقوت الملكية", nameFr: "Salle Royale El Yakout", img: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1000&auto=format&fit=crop" },
+            { id: 2, nameAr: "قصر الأفراح - ميلة", nameFr: "Palais des Fêtes - Mila", img: "https://images.unsplash.com/photo-1519741497674-611580205973?q=80&w=1000&auto=format&fit=crop" },
+            { id: 3, nameAr: "فيلا دار الضيافة", nameFr: "Villa Dar Diafa", img: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1000&auto=format&fit=crop" }
+        ];
+
+        // المكون الرئيسي للتطبيق
+        function App() {
+            const [lang, setLang] = useState('ar');
+            const t = content[lang]; // النصوص الحالية بناءً على اللغة
+
+            // تغيير اللغة وتحديث كلاس الـ body للاتجاهات والخطوط
+            const toggleLang = () => {
+                const newLang = lang === 'ar' ? 'fr' : 'ar';
+                setLang(newLang);
+                document.body.className = `lang-${newLang}`;
+                document.documentElement.lang = newLang;
+                document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+            };
+
+            return (
+                <React.Fragment>
+                    {/* --- Header --- */}
+                    <header>
+                        <a href="#" className="logo-container">
+                            <div className="logo-icon"></div> {/* Minimal Ring + Stylized Hall */}
+                            <div className="logo-text">Zaffa<span>DZ</span></div>
+                        </a>
+                        <div className="nav-actions">
+                            <button className="btn-lang" onClick={toggleLang}>
+                                {t.langBtn}
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* --- Hero Section --- */}
+                    <section className="hero">
+                        <h1>{t.sloganHtml}</h1>
+                        <p>{t.subSlogan}</p>
+                        <a href="#halls" className="btn btn-primary">
+                            <i className="fas fa-search"></i>
+                            {t.ctaMain}
+                        </a>
+                    </section>
+
+                    {/* --- Main Content (Halls) --- */}
+                    <main id="halls">
+                        <h2 className="section-title">{t.ourHalls}</h2>
+                        <div className="hall-grid">
+                            {mockHalls.map(hall => (
+                                <div className="hall-card" key={hall.id}>
+                                    <div className="hall-image-wrapper">
+                                        <img src={hall.img} alt={lang === 'ar' ? hall.nameAr : hall.nameFr} className="hall-image" />
+                                        <span className="hall-tag">{t.hallTag}</span>
+                                    </div>
+                                    <div className="hall-info">
+                                        <h3 className="hall-name">
+                                            {lang === 'ar' ? hall.nameAr : hall.nameFr}
+                                        </h3>
+                                        <p className="hall-location">
+                                            <i className="fas fa-map-marker-alt"></i>
+                                            {t.location}
+                                        </p>
+                                        <div className="hall-actions">
+                                            <a href="#" className="btn-card btn-book">{t.btnBook}</a>
+                                            <a href="#" className="btn-card btn-dates">{t.btnDates}</a>
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
                                         </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
+<<<<<<< HEAD
                     </section>
 
                     <footer className="footer">
@@ -604,9 +1056,37 @@
             );
         };
 
+=======
+                    </main>
+
+                    {/* --- Footer --- */}
+                    <footer>
+                        <div className="footer-logo">Zaffa<span>DZ</span></div>
+                        <p className="footer-slogan">{lang === 'ar' ? "نظم حفلتك بسهولة" : "Organisez votre fête facilement"}</p>
+                        
+                        <div className="social-links">
+                            {/* روابط التواصل المطلوبة */}
+                            <a href="#" className="social-icon" title="Instagram"><i className="fab fa-instagram"></i></a>
+                            <a href="#" className="social-icon" title="TikTok"><i className="fab fa-tiktok"></i></a>
+                            <a href="#" className="social-icon" title="WhatsApp"><i className="fab fa-whatsapp"></i></a>
+                        </div>
+                        
+                        <div className="copyright">
+                            &copy; {new Date().getFullYear()} Zaffa DZ. All rights reserved.
+                        </div>
+                    </footer>
+                </React.Fragment>
+            );
+        }
+
+        // رندرينغ للتطبيق داخل الـ root div
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d2aac1 (feat: initialize Zaffa DZ landing page with responsive layout and hall showcase gallery)
 </html>
